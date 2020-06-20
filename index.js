@@ -7,7 +7,6 @@ const AnimatedNumber = ({
   animatedNumber,
   fontStyle,
   animationDuration,
-  initialNumber,
 }) => {
   const numberArray = Array.from(String(animatedNumber), Number);
   const [numberHeight, setNumberHeight] = React.useState(0);
