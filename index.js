@@ -1,16 +1,28 @@
 import React from 'react';
-import { Text, View, Animated } from 'react-native';
+import {Text, View, Animated} from 'react-native';
 
 const NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const AnimatedNumber = ({
-  animatedNumber,
-  fontStyle,
-  animationDuration,
-}) => {
-  const numberArray = Array.from(String(animatedNumber), Number);
+const AnimatedNumber = ({animatedNumber, fontStyle, animationDuration}) => {
+  const animatedNumbersArr = Array.from(String(animatedNumber), Number);
+  const reducedArray = new Array(
+    Math.ceil(String(animatedNumber).length / 3),
+  ).fill(0);
+
+  reducedArray.map((__, index) => {
+    if (index === 0) {
+      return;
+    }
+
+    animatedNumbersArr.splice(
+      String(animatedNumber).length - index * 3,
+      0,
+      ',',
+    );
+  });
+
   const [numberHeight, setNumberHeight] = React.useState(0);
-  const animations = numberArray.map((__, index) => {
+  const animations = animatedNumbersArr.map((__, index) => {
     const animationHeight =
       -1 * (numberHeight * Math.floor(Math.random() * 10));
     return new Animated.Value(animationHeight);
@@ -22,9 +34,13 @@ const AnimatedNumber = ({
 
   React.useEffect(() => {
     animations.map((animation, index) => {
+      if (typeof animatedNumbersArr[index] !== 'number') {
+        return;
+      }
+
       Animated.timing(animation, {
-        toValue: -1 * (numberHeight * numberArray[index]),
-        duration: animationDuration,
+        toValue: -1 * (numberHeight * animatedNumbersArr[index]),
+        duration: animationDuration || 1400,
         useNativeDriver: true,
       }).start();
     });
@@ -37,35 +53,43 @@ const AnimatedNumber = ({
   return (
     <>
       {numberHeight !== 0 && (
-        <View style={{ flexDirection: 'row' }}>
-          {numberArray.map((n, index) => (
-            <View
-              key={index}
-              style={{ height: numberHeight, overflow: 'hidden' }}>
-              <Animated.View
-                style={[
-                  {
-                    transform: [
-                      {
-                        translateY: getTranslateY(index),
-                      },
-                    ],
-                  },
-                ]}>
-                {NUMBERS.map((number, i) => (
-                  <View style={{ flexDirection: 'row' }}>
-                    <Text style={[fontStyle, { height: numberHeight }]} key={i}>
-                      {number}
-                    </Text>
-                  </View>
-                ))}
-              </Animated.View>
-            </View>
-          ))}
+        <View style={{flexDirection: 'row'}}>
+          {animatedNumbersArr.map((n, index) => {
+            if (typeof n === 'string') {
+              return (
+                <Text style={[fontStyle, {height: numberHeight}]}>{n}</Text>
+              );
+            }
+
+            return (
+              <View
+                key={index}
+                style={{height: numberHeight, overflow: 'hidden'}}>
+                <Animated.View
+                  style={[
+                    {
+                      transform: [
+                        {
+                          translateY: getTranslateY(index),
+                        },
+                      ],
+                    },
+                  ]}>
+                  {NUMBERS.map((number, i) => (
+                    <View style={{flexDirection: 'row'}} key={i}>
+                      <Text style={[fontStyle, {height: numberHeight}]}>
+                        {number}
+                      </Text>
+                    </View>
+                  ))}
+                </Animated.View>
+              </View>
+            );
+          })}
         </View>
       )}
       <Text
-        style={[fontStyle, { position: 'absolute', top: -999999 }]}
+        style={[fontStyle, {position: 'absolute', top: -999999}]}
         onLayout={setButtonLayout}>
         {0}
       </Text>
