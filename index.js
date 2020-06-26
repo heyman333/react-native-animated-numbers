@@ -57,7 +57,7 @@ const AnimatedNumber = ({animatedNumber, fontStyle, animationDuration}) => {
           {animatedNumbersArr.map((n, index) => {
             if (typeof n === 'string') {
               return (
-                <Text style={[fontStyle, {height: numberHeight}]}>{n}</Text>
+                <Text key={index} style={[fontStyle, {height: numberHeight}]}>{n}</Text>
               );
             }
 
