@@ -1,12 +1,12 @@
- # react-native-animated-text
+ # react-native-animated-number
 
  Library showing animation of number changes
 
  ## install 
  ```shell
- yarn add react-native-animated-text
+ yarn add react-native-animated-number
  # or 
- npm install react-native-animated-text
+ npm install react-native-animated-number
  ```
 
  ## props 
