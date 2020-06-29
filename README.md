@@ -1,6 +1,6 @@
-# react-native-animated-text
+ # react-native-animated-text
 
- ## Library showing animation of number changes
+ Library showing animation of number changes
 
  ## install 
  ```shell
@@ -21,5 +21,4 @@
 
  ## screenshot
 
- <img src="./images/1.gif" style="width=300px;height:500px;" />
- <img src="./images/2.gif" style="width=300px;height:500px;" />
+ <img src="./images/1.gif" width="200" height="400"/> <img src="./images/2.gif" width="200" height="400"/>
