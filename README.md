@@ -12,11 +12,11 @@
  ## props 
  |                   | type                  | description |
 |-------------------|------------------------|-------------|
-| animatedNumber    | number                 |             |
+| startNumber       | number                 |             |
+| animateToNumber   | number                 |             |
 | fontStyle         | `StyleProp<TextStyle>` |             |
 | animationDuration | number                 |             |
 | includeComma      | boolean                |             |
-| startWithZero     | boolean                |             |
 | easing            | Easing                 |             |
 
  ## screenshot
