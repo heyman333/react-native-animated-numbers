@@ -69,5 +69,6 @@ export default App;
 ```
 
  ## screenshot
-
- <img src="images/new.gif" />
+ <img src="images/new.gif" />  
+ </br>
+ <img src="images/new_android.gif" style="width: 270px;"/>
