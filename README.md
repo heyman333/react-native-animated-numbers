@@ -2,7 +2,8 @@
 
  [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/heyman333/react-native-animated-numbers/pulls)
 [![Platform](https://img.shields.io/badge/platform-react--native-lightgrey.svg)](http://facebook.github.io/react-native/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/heyman333/react-native-animated-numbers/blob/master/LICENSE) [![Greenkeeper badge](https://badges.greenkeeper.io/heyman333/react-native-animated-numbers.svg)](https://greenkeeper.io/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/heyman333/react-native-animated-numbers/blob/master/LICENSE)
+
 <a href="https://www.npmjs.com/package/react-native-animated-numbers">
 <img alt="npm version" src="http://img.shields.io/npm/v/react-native-animated-numbers.svg?style=flat-square">
 </a>
