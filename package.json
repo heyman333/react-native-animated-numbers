@@ -1,15 +1,15 @@
 {
-  "name": "react-native-animated-number",
+  "name": "react-native-animated-numbers",
   "version": "0.0.1",
   "main": "index.js",
   "typings": "index.d.ts",
   "description": "Module that shows number changes through simple animation",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heyman333/react-native-animated-number"
+    "url": "git+https://github.com/heyman333/react-native-animated-numbers"
   },
   "keywords": [
     "react-native",
@@ -25,9 +25,9 @@
   "author": "youngsoohan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/heyman333/react-native-animated-number/issues"
+    "url": "https://github.com/heyman333/react-native-animated-numbers/issues"
   },
-  "homepage": "https://github.com/heyman333/react-native-animated-number/blob/master/README.md",
+  "homepage": "https://github.com/heyman333/react-native-animated-numbers/blob/master/README.md",
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-native": ">=0.59"
