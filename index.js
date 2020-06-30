@@ -4,18 +4,23 @@ import { Text, View, Animated, Easing } from 'react-native';
 const NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const AnimatedNumber = ({
-  animatedNumber,
+  animateToNumber,
   fontStyle,
   animationDuration,
   includeComma,
-  startWithZero,
   easing,
+  startNumber,
 }) => {
-  const animatedNumbersArr = Array.from(String(animatedNumber), Number);
+  const animateToNumbersArr = Array.from(String(animateToNumber), Number);
+  const startNumberersArr = Array.from(String(startNumber), Number);
 
   if (includeComma) {
     const reducedArray = new Array(
-      Math.ceil(String(animatedNumber).length / 3),
+      Math.ceil(String(animateToNumber).length / 3),
+    ).fill(0);
+
+    const startReducedArray = new Array(
+      Math.ceil(String(startNumber).length / 3),
     ).fill(0);
 
     reducedArray.map((__, index) => {
@@ -23,19 +28,29 @@ const AnimatedNumber = ({
         return;
       }
 
-      animatedNumbersArr.splice(
-        String(animatedNumber).length - index * 3,
+      animateToNumbersArr.splice(
+        String(animateToNumber).length - index * 3,
         0,
         ',',
       );
     });
+
+    startReducedArray.map((__, index) => {
+      if (index === 0) {
+        return;
+      }
+
+      startNumberersArr.splice(String(startNumber).length - index * 3, 0, ',');
+    });
   }
 
   const [numberHeight, setNumberHeight] = React.useState(0);
-  const animations = animatedNumbersArr.map((__, index) => {
-    const animationHeight = startWithZero
-      ? 0
-      : -1 * (numberHeight * Math.floor(Math.random() * 10));
+  const animations = animateToNumbersArr.map((__, index) => {
+    if (typeof startNumberersArr[index] !== 'number') {
+      return new Animated.Value(0);
+    }
+
+    const animationHeight = -1 * (numberHeight * startNumberersArr[index]);
     return new Animated.Value(animationHeight);
   });
 
@@ -45,18 +60,18 @@ const AnimatedNumber = ({
 
   React.useEffect(() => {
     animations.map((animation, index) => {
-      if (typeof animatedNumbersArr[index] !== 'number') {
+      if (typeof animateToNumbersArr[index] !== 'number') {
         return;
       }
 
       Animated.timing(animation, {
-        toValue: -1 * (numberHeight * animatedNumbersArr[index]),
+        toValue: -1 * (numberHeight * animateToNumbersArr[index]),
         duration: animationDuration || 1400,
         useNativeDriver: true,
         easing: easing || Easing.elastic(1.2),
       }).start();
     });
-  }, [animatedNumber, numberHeight]);
+  }, [animateToNumber, numberHeight]);
 
   const getTranslateY = (index) => {
     return animations[index];
@@ -66,7 +81,7 @@ const AnimatedNumber = ({
     <>
       {numberHeight !== 0 && (
         <View style={{ flexDirection: 'row' }}>
-          {animatedNumbersArr.map((n, index) => {
+          {animateToNumbersArr.map((n, index) => {
             if (typeof n === 'string') {
               return (
                 <Text key={index} style={[fontStyle, { height: numberHeight }]}>
