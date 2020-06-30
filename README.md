@@ -10,14 +10,14 @@
  ```
 
  ## props 
- |                   | type                  | description |
-|-------------------|------------------------|-------------|
-| startNumber       | number                 |             |
-| animateToNumber   | number                 |             |
-| fontStyle         | `StyleProp<TextStyle>` |             |
-| animationDuration | number                 |             |
-| includeComma      | boolean                |             |
-| easing            | Easing                 |             |
+|                   |    type    |  default | description                            |
+|:-----------------:|:----------:|:--------:|----------------------------------------|
+|    startNumber    |   number   |   none   | Number before animation                |
+|  animateToNumber  |   number   |   none   | Number to be animated                  |
+|     fontStyle     | TextStyle? |   none   | Style of number text                   |
+| animationDuration |   number?  | 1400(ms) | The speed at which the animation works |
+|    includeComma   |  boolean?  |   false  | Whether the number contains commas     |
+|       easing      |   Easing?  |   none   | React Native Easing API in Animated    |
 
  ## screenshot
 
