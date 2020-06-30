@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleProp, TextStyle, Easing } from "react-native"
+import { StyleProp, TextStyle, EasingFunction } from "react-native"
 
 export interface Props {
   animateToNumber: number
@@ -7,7 +7,7 @@ export interface Props {
   fontStyle?: StyleProp<TextStyle>
   animationDuration?: number
   includeComma?: boolean
-  easing?: Easing
+  easing?: EasingFunction
 }
 
 declare const AnimatedNumber: React.SFC<Props>
