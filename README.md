@@ -1,22 +1,22 @@
- # react-native-animated-number
+ # react-native-animated-numbers
 
- [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/heyman333/react-native-responsive-fontSize/pulls)
+ [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/heyman333/react-native-animated-numbers/pulls)
 [![Platform](https://img.shields.io/badge/platform-react--native-lightgrey.svg)](http://facebook.github.io/react-native/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/heyman333/react-native-responsive-fontSize/blob/master/LICENSE) [![Greenkeeper badge](https://badges.greenkeeper.io/heyman333/react-native-responsive-fontSize.svg)](https://greenkeeper.io/)
-<a href="https://www.npmjs.com/package/react-native-responsive-fontsize">
-<img alt="npm version" src="http://img.shields.io/npm/v/react-native-responsive-fontsize.svg?style=flat-square">
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/heyman333/react-native-animated-numbers/blob/master/LICENSE) [![Greenkeeper badge](https://badges.greenkeeper.io/heyman333/react-native-animated-numbers.svg)](https://greenkeeper.io/)
+<a href="https://www.npmjs.com/package/react-native-animated-numbers">
+<img alt="npm version" src="http://img.shields.io/npm/v/react-native-animated-numbers.svg?style=flat-square">
 </a>
-<a href="https://www.npmjs.com/package/react-native-responsive-fontsize">
-<img src="http://img.shields.io/npm/dm/react-native-responsive-fontsize.svg?style=flat-square">
+<a href="https://www.npmjs.com/package/react-native-animated-numbers">
+<img src="http://img.shields.io/npm/dm/react-native-animated-numbers.svg?style=flat-square">
 </a>
 
  Library showing animation of number changes
 
  ## install 
  ```shell
- yarn add react-native-animated-number
+ yarn add react-native-animated-numbers
  # or 
- npm install react-native-animated-number
+ npm install react-native-animated-numbers
  ```
 
  ## props 
@@ -33,7 +33,7 @@
 
 ```js
 import React from 'react';
-import AnimatedNumber from 'react-native-animated-number';
+import AnimatedNumber from 'react-native-animated-numbers';
 import {Button, View} from 'react-native';
 
 const App = () => {
