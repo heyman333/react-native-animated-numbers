@@ -5,6 +5,7 @@
   "typings": "index.d.ts",
   "description": "Module that shows number changes through simple animation",
   "scripts": {
+    "lint": "yarn eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,5 +32,9 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-native": ">=0.59"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-plugin-react": "^7.20.3"
   }
 }
