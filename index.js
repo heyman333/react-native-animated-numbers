@@ -1,7 +1,21 @@
 import React from 'react';
-import { Text, View, Animated, Easing } from 'react-native';
+import { Text, View } from 'react-native';
+import Animated, { Easing } from 'react-native-reanimated';
 
 const NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const usePrevious = (value) =>{
+	const ref = React.useRef();
+	React.useEffect(() => {
+		ref.current = value;
+	});
+
+	if (typeof ref.current === 'undefined') {
+		return 0;
+	}
+	
+	return ref.current;
+};
 
 const AnimatedNumber = ({
 	animateToNumber,
@@ -9,10 +23,10 @@ const AnimatedNumber = ({
 	animationDuration,
 	includeComma,
 	easing,
-	startNumber,
 }) => {
+	const prevNumber = usePrevious(animateToNumber);
 	const animateToNumbersArr = Array.from(String(animateToNumber), Number);
-	const startNumberersArr = Array.from(String(startNumber), Number);
+	const prevNumberersArr = Array.from(String(prevNumber), Number);
 
 	if (includeComma) {
 		const reducedArray = new Array(
@@ -20,7 +34,7 @@ const AnimatedNumber = ({
 		).fill(0);
 
 		const startReducedArray = new Array(
-			Math.ceil(String(startNumber).length / 3)
+			Math.ceil(String(prevNumber).length / 3)
 		).fill(0);
 
 		reducedArray.map((__, index) => {
@@ -40,17 +54,17 @@ const AnimatedNumber = ({
 				return;
 			}
 
-			startNumberersArr.splice(String(startNumber).length - index * 3, 0, ',');
+			prevNumberersArr.splice(String(prevNumber).length - index * 3, 0, ',');
 		});
 	}
 
 	const [numberHeight, setNumberHeight] = React.useState(0);
 	const animations = animateToNumbersArr.map((__, index) => {
-		if (typeof startNumberersArr[index] !== 'number') {
+		if (typeof prevNumberersArr[index] !== 'number') {
 			return new Animated.Value(0);
 		}
 
-		const animationHeight = -1 * (numberHeight * startNumberersArr[index]);
+		const animationHeight = -1 * (numberHeight * prevNumberersArr[index]);
 		return new Animated.Value(animationHeight);
 	});
 

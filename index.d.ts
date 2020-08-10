@@ -3,7 +3,6 @@ import { StyleProp, TextStyle, EasingFunction } from "react-native"
 
 export interface Props {
   animateToNumber: number
-  startNumber: number
   fontStyle?: StyleProp<TextStyle>
   animationDuration?: number
   includeComma?: boolean
