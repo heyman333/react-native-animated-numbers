@@ -23,7 +23,6 @@
  ## props 
 |                   |    type    |  default | description                            |
 |:-----------------:|:----------:|:--------:|----------------------------------------|
-|    startNumber    |   number   |   none   | Number before animation                |
 |  animateToNumber  |   number   |   none   | Number to be animated                  |
 |     fontStyle     | TextStyle? |   none   | Style of number text                   |
 | animationDuration |   number?  | 1400(ms) | The speed at which the animation works |
@@ -34,38 +33,29 @@
 
 ```js
 import React from 'react';
-import AnimatedNumber from 'react-native-animated-numbers';
-import {Button, View} from 'react-native';
+import {SafeAreaView, Button} from 'react-native';
+import AnimatedNumbers from 'react-native-animated-numbers';
 
 const App = () => {
-  const [animatedNumber, setAnimatedNumber] = React.useState({
-    startNumber: 223,
-    animatedToNumber: 223,
-  });
+  const [animateToNumber, setAnimateToNumber] = React.useState(7979);
 
   const increase = () => {
-    setAnimatedNumber({
-      startNumber: animatedNumber.animatedToNumber,
-      animatedToNumber: animatedNumber.animatedToNumber + 241,
-    });
+    setAnimateToNumber(animateToNumber + 1999);
   };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Button onPress={increase} title="increase number" />
-      <AnimatedNumber
-        startNumber={animatedNumber.startNumber}
-        animateToNumber={animatedNumber.animatedToNumber}
-        fontStyle={{fontSize: 35, color: '#3e9e39'}}
-        animationDuration={800}
-        includeComma={true}
+    <SafeAreaView
+      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <AnimatedNumbers
+        includeComma
+        animateToNumber={animateToNumber}
+        fontStyle={{fontSize: 50, fontWeight: 'bold'}}
       />
-    </View>
+      <Button title="increase" onPress={increase} />
+    </SafeAreaView>
   );
 };
-
 export default App;
-
 ```
 
  ## screenshot
