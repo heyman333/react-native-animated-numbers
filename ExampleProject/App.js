@@ -3,11 +3,15 @@ import {SafeAreaView, Button} from 'react-native';
 import AnimatedNumbers from 'react-native-animated-numbers';
 
 const App = () => {
-  const [animateToNumber, setAnimateToNumber] = React.useState(7979);
+  const [animateToNumber, setAnimateToNumber] = React.useState(483);
 
   const increase = () => {
-    setAnimateToNumber(animateToNumber + 1999);
+    setAnimateToNumber(animateToNumber + 391);
   };
+
+  const decrease = () => { 
+    setAnimateToNumber(animateToNumber - 311)
+  }
 
   return (
     <SafeAreaView
@@ -18,6 +22,7 @@ const App = () => {
         fontStyle={{fontSize: 50, fontWeight: 'bold'}}
       />
       <Button title="increase" onPress={increase} />
+      <Button title="decrease" onPress={decrease} />
     </SafeAreaView>
   );
 };

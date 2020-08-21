@@ -14,10 +14,16 @@
  Library showing animation of number changes
 
  ## install 
+
+This package is using [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/about). So following libs should be installed first
+
+```shell
+yarn add react-native-reanimated react-native-gesture-handler && cd ios && pod install
+```
+
+next
  ```shell
  yarn add react-native-animated-numbers
- # or 
- npm install react-native-animated-numbers
  ```
 
  ## props 
@@ -59,6 +65,5 @@ export default App;
 ```
 
  ## screenshot
- <img src="images/new.gif" />  
- </br>
- <img src="images/new_android.gif" width="270" />
+ <img src="images/ios.gif" />
+ <img src="images/android.gif" width="270" />
