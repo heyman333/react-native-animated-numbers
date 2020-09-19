@@ -69,7 +69,3 @@ export default App;
  ## screenshot
  <img src="images/ios.gif" />
  <img src="images/android.gif" width="270" />
-
-
-
-
