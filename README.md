@@ -11,7 +11,9 @@
 <img src="http://img.shields.io/npm/dm/react-native-animated-numbers.svg?style=flat-square">
 </a>
 
- Library showing animation of number changes
+ Library showing animation of number changes in react-native
+
+ If you want web version in react.js [download react-animated-numbers](https://github.com/heyman333/react-animated-numbers)
 
  ## install 
 

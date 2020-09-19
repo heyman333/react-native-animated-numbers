@@ -4,7 +4,7 @@ import Animated, { Easing } from 'react-native-reanimated';
 
 const NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const usePrevious = (value) =>{
+const usePrevious = (value) => {
 	const ref = React.useRef();
 	React.useEffect(() => {
 		ref.current = value;
@@ -13,7 +13,7 @@ const usePrevious = (value) =>{
 	if (typeof ref.current === 'undefined') {
 		return 0;
 	}
-	
+
 	return ref.current;
 };
 
@@ -25,16 +25,19 @@ const AnimatedNumber = ({
 	easing,
 }) => {
 	const prevNumber = usePrevious(animateToNumber);
-	const animateToNumbersArr = Array.from(String(animateToNumber), Number);
-	const prevNumberersArr = Array.from(String(prevNumber), Number);
+	const animateToNumberString = String(Math.abs(animateToNumber));
+	const prevNumberString = String(Math.abs(prevNumber));
+
+	const animateToNumbersArr = Array.from(animateToNumberString, Number);
+	const prevNumberersArr = Array.from(prevNumberString, Number);
 
 	if (includeComma) {
 		const reducedArray = new Array(
-			Math.ceil(String(animateToNumber).length / 3)
+			Math.ceil(animateToNumberString.length / 3)
 		).fill(0);
 
 		const startReducedArray = new Array(
-			Math.ceil(String(prevNumber).length / 3)
+			Math.ceil(prevNumberString.length / 3)
 		).fill(0);
 
 		reducedArray.map((__, index) => {
@@ -43,7 +46,7 @@ const AnimatedNumber = ({
 			}
 
 			animateToNumbersArr.splice(
-				String(animateToNumber).length - index * 3,
+				animateToNumberString.length - index * 3,
 				0,
 				','
 			);
@@ -54,7 +57,7 @@ const AnimatedNumber = ({
 				return;
 			}
 
-			prevNumberersArr.splice(String(prevNumber).length - index * 3, 0, ',');
+			prevNumberersArr.splice(prevNumberString.length - index * 3, 0, ',');
 		});
 	}
 
@@ -95,6 +98,9 @@ const AnimatedNumber = ({
 		<>
 			{numberHeight !== 0 && (
 				<View style={{ flexDirection: 'row' }}>
+					{animateToNumber < 0 && (
+						<Text style={[fontStyle, { height: numberHeight }]}>{'-'}</Text>
+					)}
 					{animateToNumbersArr.map((n, index) => {
 						if (typeof n === 'string') {
 							return (
@@ -105,7 +111,10 @@ const AnimatedNumber = ({
 						}
 
 						return (
-							<View key={index} style={{ height: numberHeight, overflow: 'hidden' }}>
+							<View
+								key={index}
+								style={{ height: numberHeight, overflow: 'hidden' }}
+							>
 								<Animated.View
 									style={[
 										{
@@ -119,7 +128,9 @@ const AnimatedNumber = ({
 								>
 									{NUMBERS.map((number, i) => (
 										<View style={{ flexDirection: 'row' }} key={i}>
-											<Text style={[fontStyle, { height: numberHeight }]}>{number}</Text>
+											<Text style={[fontStyle, { height: numberHeight }]}>
+												{number}
+											</Text>
 										</View>
 									))}
 								</Animated.View>
