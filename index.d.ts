@@ -7,7 +7,7 @@ export interface Props {
   fontStyle?: StyleProp<TextStyle>
   animationDuration?: number
   includeComma?: boolean
-  easing?: Animated.EasingFunction
+  easing?: Animated.EasingNodeFunction
 }
 
 declare const AnimatedNumber: React.SFC<Props>
