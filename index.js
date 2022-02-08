@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import Animated, { EasingNode } from 'react-native-reanimated';
 
-const NUMBERS = Array(10).fill()..map((_, i) => i);
+const NUMBERS = Array(10).fill().map((_, i) => i);
 
 const usePrevious = (value) => {
 	const ref = React.useRef();
