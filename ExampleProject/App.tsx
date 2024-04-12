@@ -1,6 +1,8 @@
-import React from "react";
-import { SafeAreaView, Button } from "react-native";
-import AnimatedNumbers from "react-native-animated-numbers";
+import React from 'react';
+import { SafeAreaView, Button, Easing } from 'react-native';
+import AnimatedNumbers, {
+  AnimatedNumberProps,
+} from 'react-native-animated-numbers';
 
 const App = () => {
   const [animateToNumber, setAnimateToNumber] = React.useState(483);
@@ -15,17 +17,26 @@ const App = () => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       <AnimatedNumbers
         includeComma
         animateToNumber={animateToNumber}
-        fontStyle={{ fontSize: 50, fontWeight: "bold" }}
+        easing={Easing.elastic(1)}
+        fontStyle={{ fontSize: 50, fontWeight: 'bold' }}
       />
       <Button title="increase" onPress={increase} />
       <Button title="decrease" onPress={decrease} />
+      <Button
+        title="random"
+        onPress={() => setAnimateToNumber(randomNumber())}
+      />
     </SafeAreaView>
   );
 };
+
+function randomNumber() {
+  return Math.floor(Math.random() * 10000);
+}
 
 export default App;

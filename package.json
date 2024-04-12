@@ -45,10 +45,11 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "@react-native/eslint-config": "^0.73.1",
-    "prettier": "^3.2.5",
+    "prettier": "^3.0.3",
     "react-native": "^0.73.6",
     "react-native-builder-bob": "^0.23.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "@types/react": "^18.2.44"
   },
   "dependencies": {},
   "react-native-builder-bob": {

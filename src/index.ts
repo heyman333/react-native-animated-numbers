@@ -1,5 +1,4 @@
-function Test() {
-  return null;
-}
+export * from './components/AnimatedNumber';
+import AnimatedNumber from './components/AnimatedNumber';
 
-export default Test;
+export default AnimatedNumber;
