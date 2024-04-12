@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "rootDir": ".",
+    "paths": {
+      "react-native-animated-numbers": ["./src/index"]
+    },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,

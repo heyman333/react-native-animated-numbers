@@ -43,5 +43,19 @@
     "react-native-builder-bob": "^0.23.2",
     "typescript": "^5.2.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  }
 }
