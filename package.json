@@ -1,13 +1,20 @@
 {
   "name": "react-native-animated-numbers",
   "version": "0.4.1",
-  "main": "index.js",
-  "typings": "index.d.ts",
   "description": "Module that shows number changes through simple animation",
   "scripts": {
     "lint": "yarn eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "bob build"
   },
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "src/index.ts",
+  "types": "lib/typescript/src/index.d.ts",
+  "source": "src/index.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/heyman333/react-native-animated-numbers"
@@ -31,16 +38,32 @@
   "homepage": "https://github.com/heyman333/react-native-animated-numbers/blob/master/README.md",
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-native": ">=0.59",
-    "react-native-reanimated": ">=2",
-    "react-native-gesture-handler": "1.10.3"
+    "react-native": ">=0.59"
   },
   "devDependencies": {
-    "eslint": "^7.4.0",
-    "eslint-plugin-react": "^7.20.3"
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "@react-native/eslint-config": "^0.73.1",
+    "prettier": "^3.0.3",
+    "react-native": "^0.73.6",
+    "react-native-builder-bob": "^0.23.2",
+    "typescript": "^5.2.2",
+    "@types/react": "^18.2.44"
   },
-  "dependencies": {
-    "react-native-reanimated": "^2.2.4",
-    "react-native-gesture-handler": "^1.10.3"
+  "dependencies": {},
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
   }
 }
