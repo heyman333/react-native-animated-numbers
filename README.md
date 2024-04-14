@@ -30,6 +30,8 @@ yarn add react-native-animated-numbers
 | animationDuration |  number?   |      1400(ms)       | The speed at which the animation works |
 |   includeComma    |  boolean?  |        false        | Whether the number contains commas     |
 |      easing       |  Easing?   | Easing.elastic(1.2) | React Native Easing API in Animated    |
+|  containerStyle   | ViewStyle? |        none         | Style of container view                |
+|    fontVariant    |  string[]  |  ['tabular-nums']   | Font variants for a font               |
 
 ## example
 

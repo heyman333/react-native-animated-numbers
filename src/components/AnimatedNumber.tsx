@@ -8,6 +8,7 @@ import type {
 import { Text, View, Animated, Easing, StyleSheet } from 'react-native';
 import usePrevious from '../hooks/usePrevious';
 import { createNumberArrayWithComma, toAbsoluteInteger } from '../utils';
+import { DEFAULT_FONT_VARIANT } from '../constants';
 
 export interface AnimatedNumberProps {
   animateToNumber: number;
@@ -16,6 +17,7 @@ export interface AnimatedNumberProps {
   includeComma?: boolean;
   easing?: Animated.TimingAnimationConfig['easing'];
   containerStyle?: StyleProp<ViewStyle>;
+  fontVariant?: TextStyle['fontVariant'];
 }
 
 const AnimatedNumber = ({
@@ -25,6 +27,7 @@ const AnimatedNumber = ({
   includeComma,
   easing,
   containerStyle,
+  fontVariant = DEFAULT_FONT_VARIANT,
 }: AnimatedNumberProps) => {
   const animationRef = useRef<Animated.CompositeAnimation | null>(null);
 
@@ -144,7 +147,13 @@ const AnimatedNumber = ({
                   ]}
                 >
                   {NUMBERS.map((number, i) => (
-                    <Text style={[fontStyle, { height }]} key={i}>
+                    <Text
+                      style={StyleSheet.flatten([
+                        fontStyle,
+                        { fontVariant, height },
+                      ])}
+                      key={i}
+                    >
                       {number}
                     </Text>
                   ))}
