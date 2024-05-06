@@ -1,6 +1,6 @@
 {
   "name": "react-native-animated-numbers",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "description": "Module that shows number changes through simple animation",
   "scripts": {
     "lint": "yarn eslint .",
