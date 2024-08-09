@@ -69,4 +69,6 @@ export default App;
 
  <img src="images/ios.gif" />
  <img src="images/android.gif" width="270" />
- <img src="images/currency.gif" />
+
+ ### currencies
+ <img src="images/currency.gif" width="270" />
