@@ -55,6 +55,8 @@ const App = () => {
         includeComma
         animateToNumber={animateToNumber}
         fontStyle={{ fontSize: 50, fontWeight: 'bold' }}
+        isCurrency
+        currencySymbol="USD"
       />
       <Button title="increase" onPress={increase} />
     </SafeAreaView>
@@ -67,3 +69,6 @@ export default App;
 
  <img src="images/ios.gif" />
  <img src="images/android.gif" width="270" />
+
+ ### currencies
+ <img src="images/currency.gif" width="270" />

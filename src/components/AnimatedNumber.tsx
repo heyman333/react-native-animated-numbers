@@ -7,7 +7,7 @@ import type {
 } from 'react-native';
 import { Text, View, Animated, Easing, StyleSheet } from 'react-native';
 import usePrevious from '../hooks/usePrevious';
-import { createNumberArrayWithComma, toAbsoluteInteger } from '../utils';
+import { toAbsoluteInteger, createNumberArrayWithComma } from '../utils';
 import { DEFAULT_FONT_VARIANT } from '../constants';
 
 export interface AnimatedNumberProps {
@@ -18,6 +18,8 @@ export interface AnimatedNumberProps {
   easing?: Animated.TimingAnimationConfig['easing'];
   containerStyle?: StyleProp<ViewStyle>;
   fontVariant?: TextStyle['fontVariant'];
+  isCurrency?: boolean;
+  currencySymbol?: string;
 }
 
 const AnimatedNumber = ({
@@ -28,16 +30,16 @@ const AnimatedNumber = ({
   easing,
   containerStyle,
   fontVariant = DEFAULT_FONT_VARIANT,
+  isCurrency,
+  currencySymbol,
 }: AnimatedNumberProps) => {
   const animationRef = useRef<Animated.CompositeAnimation | null>(null);
 
-  const animateToNumber = toAbsoluteInteger(givenAnimateToNumber);
-
+  const animateToNumber = toAbsoluteInteger(Number(givenAnimateToNumber));
   const prevNumber = usePrevious(animateToNumber);
 
-  const animateToNumberString = animateToNumber.toString();
-
-  const prevNumberString = prevNumber.toString();
+  const animateToNumberString = animateToNumber;
+  const prevNumberString = prevNumber;
 
   const NUMBERS = useMemo(
     () =>
@@ -49,15 +51,23 @@ const AnimatedNumber = ({
 
   const nextNumbersArr = useMemo(() => {
     return includeComma
-      ? createNumberArrayWithComma(animateToNumberString)
-      : Array.from(animateToNumberString, Number);
-  }, [animateToNumberString, includeComma]);
+      ? createNumberArrayWithComma(
+          Number(animateToNumberString),
+          isCurrency ? true : false,
+          currencySymbol
+        )
+      : Array.from(animateToNumberString.toString(), Number);
+  }, [animateToNumberString, currencySymbol, includeComma, isCurrency]);
 
   const prevNumbersArr = useMemo(() => {
     return includeComma
-      ? createNumberArrayWithComma(prevNumberString)
-      : Array.from(prevNumberString, Number);
-  }, [prevNumberString, includeComma]);
+      ? createNumberArrayWithComma(
+          Number(prevNumberString),
+          isCurrency ? true : false,
+          currencySymbol
+        )
+      : Array.from(prevNumberString.toString(), Number);
+  }, [currencySymbol, includeComma, isCurrency, prevNumberString]);
 
   const [height, setHeight] = React.useState(0);
 
@@ -165,7 +175,7 @@ const AnimatedNumber = ({
       )}
       <View style={{ opacity: 0, position: 'absolute' }} pointerEvents="none">
         <Text style={fontStyle} onLayout={setButtonLayout} numberOfLines={1}>
-          {animateToNumber}
+          {animateToNumberString} {/* Display formatted number */}
         </Text>
       </View>
     </>

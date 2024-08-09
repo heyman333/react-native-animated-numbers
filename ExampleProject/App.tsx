@@ -1,8 +1,6 @@
 import React from 'react';
 import { SafeAreaView, Button, Easing } from 'react-native';
-import AnimatedNumbers, {
-  AnimatedNumberProps,
-} from 'react-native-animated-numbers';
+import AnimatedNumbers from 'react-native-animated-numbers';
 
 const App = () => {
   const [animateToNumber, setAnimateToNumber] = React.useState(483);
@@ -24,6 +22,8 @@ const App = () => {
         animateToNumber={animateToNumber}
         easing={Easing.elastic(1)}
         fontStyle={{ fontSize: 50, fontWeight: 'bold' }}
+        isCurrency
+        currencySymbol="USD"
       />
       <Button title="increase" onPress={increase} />
       <Button title="decrease" onPress={decrease} />
