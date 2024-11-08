@@ -18,6 +18,7 @@ export interface AnimatedNumberProps {
   easing?: Animated.TimingAnimationConfig['easing'];
   containerStyle?: StyleProp<ViewStyle>;
   fontVariant?: TextStyle['fontVariant'];
+  locale?: Intl.LocalesArgument;
 }
 
 const AnimatedNumber = ({
@@ -28,6 +29,7 @@ const AnimatedNumber = ({
   easing,
   containerStyle,
   fontVariant = DEFAULT_FONT_VARIANT,
+  locale = 'en-US',
 }: AnimatedNumberProps) => {
   const animationRef = useRef<Animated.CompositeAnimation | null>(null);
 
@@ -49,15 +51,15 @@ const AnimatedNumber = ({
 
   const nextNumbersArr = useMemo(() => {
     return includeComma
-      ? createNumberArrayWithComma(animateToNumberString)
+      ? createNumberArrayWithComma(animateToNumberString, locale)
       : Array.from(animateToNumberString, Number);
-  }, [animateToNumberString, includeComma]);
+  }, [animateToNumberString, includeComma, locale]);
 
   const prevNumbersArr = useMemo(() => {
     return includeComma
-      ? createNumberArrayWithComma(prevNumberString)
+      ? createNumberArrayWithComma(prevNumberString, locale)
       : Array.from(prevNumberString, Number);
-  }, [prevNumberString, includeComma]);
+  }, [includeComma, prevNumberString, locale]);
 
   const [height, setHeight] = React.useState(0);
 
