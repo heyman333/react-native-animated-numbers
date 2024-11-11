@@ -32,6 +32,7 @@ yarn add react-native-animated-numbers
 |      easing       |  Easing?   | Easing.elastic(1.2) | React Native Easing API in Animated    |
 |  containerStyle   | ViewStyle? |        none         | Style of container view                |
 |    fontVariant    |  string[]  |  ['tabular-nums']   | Font variants for a font               |
+| locale | Intl.LocalesArgument | 'en-US' | the locale to be used to split the number when includeComma is true |
 
 ## example
 

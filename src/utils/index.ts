@@ -2,17 +2,19 @@ export function toAbsoluteInteger(num: number) {
   return Math.abs(Math.floor(num));
 }
 
-export function createNumberArrayWithComma(numberString: string): number[] {
-  const arr = Array.from(numberString, Number);
+export function createNumberArrayWithComma(
+  numberString: string,
+  locale: Intl.LocalesArgument = 'en-US'
+): (number | ',')[] {
+  // Convert the string to a number and use Intl.NumberFormat to format it
+  const formattedString = new Intl.NumberFormat(locale).format(
+    Number(numberString)
+  );
 
-  const reducedArray = new Array(Math.ceil(numberString.length / 3)).fill(0);
-
-  reducedArray.forEach((_, index) => {
-    if (index !== 0) {
-      //@ts-ignore splice(start: number, deleteCount: number, ...items: T[]): T[];
-      arr.splice(numberString.length - index * 3, 0, ',');
-    }
-  });
+  // Split the formatted string into an array of numbers and commas
+  const arr = Array.from(formattedString, (char) =>
+    char === ',' ? char : Number(char)
+  );
 
   return arr;
 }
